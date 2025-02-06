@@ -12,6 +12,18 @@ async function fetchData() {
   }
 }
 
+async function fetchCountryData() {
+  try {
+    var COUNTRY = document.getElementById("country").value;
+    var fullURL = API_URL + '/' + COUNTRY;
+    const response = await fetch(fullURL);
+    const data = await response.json();
+    displayCountryData(data);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
+
 // Display data in the table
 function displayData(data) {
   const tableBody = document.querySelector("#covid-table tbody");
@@ -28,6 +40,21 @@ function displayData(data) {
     `;
     tableBody.appendChild(row);
   });
+}
+
+function displayCountryData(data) {
+  const tableBody = document.querySelector("#covid-table tbody");
+  tableBody.innerHTML = ""; // Clear existing rows
+
+  const row = document.createElement("tr");
+  row.innerHTML = `
+      <td>${data.country}</td>
+      <td>${data.cases.toLocaleString()}</td>
+      <td>${data.active.toLocaleString()}</td>
+      <td>${data.recovered.toLocaleString()}</td>
+      <td>${data.deaths.toLocaleString()}</td>
+    `;
+  tableBody.appendChild(row);
 }
 
 // Fetch data when the page loads
