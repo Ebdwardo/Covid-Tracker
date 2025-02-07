@@ -6,13 +6,17 @@
   <title>COVID-19 Tracker</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <div class="search-area">
+<body id = "body">
+  <div class="search-area" id="search-area">
     <input type="text" id="country" placeholder="Enter a Country" />
     <button type="submit" onclick="fetchCountryData()">Search</button>
     <button type="submit" onclick="fetchData()">Reset</button>
+    <label class="switch">
+      <input class="toggle" id="toggle" title="checkbox" type="checkbox" onclick="darkMode()">
+      <span class="slider round"></span>
+    </label>
   </div>
-  <div class="container">
+  <div class="container" id="container">
     <h1>COVID-19 Tracker</h1>
     <p>Real-time COVID-19 statistics by country.</p>
     <table id="covid-table">

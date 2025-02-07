@@ -57,5 +57,15 @@ function displayCountryData(data) {
   tableBody.appendChild(row);
 }
 
+function darkMode(){
+  var x = document.getElementById('toggle');
+  if (x.checked == true) {
+    document.getElementById("body").style.backgroundColor = "gray"
+    // document.getElementById("container").style.backgroundColor = "gray"
+  } else {
+    document.getElementById("body").style.backgroundColor = "#f4f4f4"
+  }
+}
+
 // Fetch data when the page loads
 fetchData();
